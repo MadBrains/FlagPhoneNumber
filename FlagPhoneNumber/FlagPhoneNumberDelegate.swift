@@ -10,4 +10,5 @@ import Foundation
 
 internal protocol FPNDelegate {
 	func fpnDidSelect(country: FPNCountry)
+    func fpnSearchControllerDidClose()
 }

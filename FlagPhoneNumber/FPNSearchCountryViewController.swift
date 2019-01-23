@@ -48,9 +48,11 @@ class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpda
 		searchController?.isActive = true
 	}
 
-	@objc private func dismissController() {
-		dismiss(animated: true, completion: nil)
-	}
+    @objc private func dismissController() {
+        dismiss(animated: true) { [weak self] in
+            self?.delegate?.fpnSearchControllerDidClose()
+        }
+    }
 
 	private func initSearchBarController() {
 		searchController = UISearchController(searchResultsController: nil)

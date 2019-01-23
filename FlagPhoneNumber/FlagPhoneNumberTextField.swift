@@ -123,6 +123,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		autocorrectionType = .no
 		addTarget(self, action: #selector(didEditText), for: .editingChanged)
 		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
+        addTarget(self, action: #selector(resetKeyBoard), for: .editingDidEnd)
 	}
 
 	private func setupFlagButton() {
@@ -348,7 +349,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
 	private func getCountryListBarButtonItems() -> [UIBarButtonItem] {
 		let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(resetKeyBoard))
+		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(displayNumberKeyBoard))
 
 		doneButton.accessibilityLabel = "doneButton"
 
@@ -393,4 +394,9 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	internal func fpnDidSelect(country: FPNCountry) {
 		setFlag(for: country.code)
 	}
+    
+    internal func fpnSearchControllerDidClose() {
+        becomeFirstResponder()
+        displayNumberKeyBoard()
+    }
 }
