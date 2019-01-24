@@ -11,4 +11,5 @@ import Foundation
 public protocol FPNTextFieldDelegate: UITextFieldDelegate {
 	func fpnDidSelectCountry(name: String, dialCode: String, code: String)
 	func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool)
+    func fpnDidUpdateLeftView(newFrame: CGRect)
 }

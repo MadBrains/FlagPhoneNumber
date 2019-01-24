@@ -100,8 +100,9 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
 	open override func layoutSubviews() {
 		super.layoutSubviews()
-
-		leftView?.frame = leftViewRect(forBounds: frame)
+        let newFrame = leftViewRect(forBounds: frame)
+		leftView?.frame = newFrame
+        (delegate as? FPNTextFieldDelegate)?.fpnDidUpdateLeftView(newFrame: newFrame)
 		flagButton.imageEdgeInsets = flagButtonEdgeInsets
 	}
 
