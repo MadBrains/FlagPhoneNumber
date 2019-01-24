@@ -174,14 +174,12 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	@objc private func displayNumberKeyBoard() {
 		inputView = nil
 		inputAccessoryView = textFieldInputAccessoryView
-		tintColor = .gray
 		reloadInputViews()
 	}
 
 	@objc private func displayCountryKeyboard() {
 		inputView = countryPicker
 		inputAccessoryView = getToolBar(with: getCountryListBarButtonItems())
-		tintColor = .clear
 		reloadInputViews()
 		becomeFirstResponder()
 	}
